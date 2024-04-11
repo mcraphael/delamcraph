@@ -101,14 +101,9 @@ const Got: React.FC = () => {
 					) : (
 						<>
 							<Box>
-								<Grid container justifyContent="left">
+								<Grid container justifyContent="center">
 									<Grid item xs={12} sm={8} md={6}>
-										<Box
-											bgcolor={colorGrey}
-											p={2}
-											borderRadius={2}
-											sx={{ minWidth: 600 }}
-										>
+										<Box bgcolor={colorGrey} p={2} borderRadius={2}>
 											<Box display="flex" flexDirection="column">
 												<Typography>"{quote?.sentence}"</Typography>
 												<Typography
