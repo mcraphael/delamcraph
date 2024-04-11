@@ -8,6 +8,7 @@ import Connect from "./components/connect";
 import Skills from "./components/skills";
 import Got from "./components/got";
 import Footer from "./components/footer";
+import { Analytics } from "@vercel/analytics/react";
 
 const darkTheme = createTheme({
 	palette: {
@@ -18,6 +19,7 @@ const darkTheme = createTheme({
 function App() {
 	return (
 		<ThemeProvider theme={darkTheme}>
+			<Analytics />
 			<CssBaseline />
 			<Header />
 			<StartTerminal />
