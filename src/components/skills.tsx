@@ -7,38 +7,6 @@ const colorGreen = green[400];
 const colorRed = red[300];
 const colorBlue = blue[300];
 
-import TypeScriptIcon from "./icons/typescript.svg"; // Import your SVG files for each language
-import JavaScriptIcon from "./icons/javascript.svg";
-// Import icons for other languages as needed
-
-interface LanguageChipProps {
-	language: string;
-}
-
-const LanguageChip: React.FC<LanguageChipProps> = ({ language }) => {
-	const getLanguageIcon = (language: string) => {
-		switch (language.toLowerCase()) {
-			case "typescript":
-				return <TypeScriptIcon />;
-			case "javascript":
-				return <JavaScriptIcon />;
-			// Add cases for other languages
-			default:
-				return null;
-		}
-	};
-	const languageIcon = getLanguageIcon(language);
-
-	return (
-		<Chip
-			icon={languageIcon || undefined}
-			label={language}
-			variant="outlined"
-			color="primary"
-			style={{ margin: "0.5rem" }}
-		/>
-	);
-};
 const Skills: React.FC = () => {
 	const programmingLanguages: string[] = [
 		"TypeScript",
@@ -82,11 +50,14 @@ const Skills: React.FC = () => {
 
 			<Card sx={{ maxWidth: 650, mt: 2 }} variant="outlined">
 				<CardContent>
-					<div>
-						{programmingLanguages.map((language, index) => (
-							<LanguageChip key={index} language={language} />
-						))}
-					</div>
+					{programmingLanguages.map((language, index) => (
+						<Chip
+							key={index}
+							label={language}
+							// Add any additional props or styles as needed
+							style={{ marginRight: 5, marginBottom: 5 }}
+						/>
+					))}
 				</CardContent>
 			</Card>
 		</>
