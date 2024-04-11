@@ -1,99 +1,137 @@
-import { Button, Card, CardContent, Stack, Typography } from "@mui/material";
-import { blue, green, red } from "@mui/material/colors";
-import Avatar from "@mui/material/Avatar";
-import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
-import React from "react";
-import Typical from "react-typical";
+import {
+	Box,
+	Card,
+	CardContent,
+	Grid,
+	Skeleton,
+	Stack,
+	Typography,
+} from "@mui/material";
+import { blue, green, grey, red } from "@mui/material/colors";
 
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+interface House {
+	name: string;
+	slug: string;
+}
+
+interface Character {
+	name: string;
+	slug: string;
+	house: House;
+}
+
+interface Quote {
+	sentence: string;
+	character: Character;
+}
 const colorGreen = green[400];
 const colorRed = red[300];
 const colorBlue = blue[300];
+const colorGrey = grey[800];
 
 const Got: React.FC = () => {
-	const handleDownload = () => {
-		const fileUrl = "/Raphael_CV.pdf";
+	const [quote, setQuote] = useState<Quote | null>(null);
+	const [loading, setLoading] = useState<boolean>(false);
 
-		const link = document.createElement("a");
-		link.href = fileUrl;
-		link.setAttribute("download", "Raphael_CV.pdf");
-		document.body.appendChild(link);
-		link.click();
-		document.body.removeChild(link);
+	useEffect(() => {
+		const fetchQuoteAfterDelay = () => {
+			setTimeout(() => {
+				fetchRandomQuote();
+			}, 3 * 1000);
+		};
+
+		fetchRandomQuote();
+		fetchQuoteAfterDelay();
+	}, []);
+
+	const fetchRandomQuote = async () => {
+		setLoading(true);
+		try {
+			const response = await axios.get<Quote>(
+				"https://api.gameofthronesquotes.xyz/v1/random"
+			);
+			setQuote(response.data);
+			console.log(response.data);
+		} catch (error) {
+			console.error("Error fetching quote:", error);
+		} finally {
+			setLoading(false);
+		}
 	};
 
 	return (
 		<>
-			<Stack direction="row" spacing={0.2} mt={2}>
-				<Typography color={colorBlue} variant="h6">
+			<Stack direction="row" spacing={0.2} mt={4}>
+				<Typography color={colorBlue} variant="body1" fontWeight="bold">
 					C
 				</Typography>
-				<Typography color={colorRed} variant="h6">
+				<Typography color={colorRed} variant="body1">
 					:
 				</Typography>
-				<Typography color={colorRed} variant="h6">
+				<Typography color={colorRed} variant="body1">
 					\
 				</Typography>
-				<Typography color={colorBlue} variant="h6">
+				<Typography color={colorBlue} variant="body1">
 					Users
 				</Typography>
-				<Typography color={colorRed} variant="h6">
+				<Typography color={colorRed} variant="body1">
 					\
 				</Typography>
-				<Typography color={colorBlue} variant="h6">
+				<Typography color={colorBlue} variant="body1">
 					McRaph
 				</Typography>
-				<Typography variant="h6"> &gt; </Typography>&nbsp;
-				<Typography color={colorGreen} variant="h6">
-					Bio
+				<Typography variant="body1"> &gt; </Typography>&nbsp;
+				<Typography
+					color={colorGreen}
+					variant="body1"
+					fontWeight="bold"
+					textAlign="left"
+				>
+					Movies🍿🎬, GOT Quotes
 				</Typography>
 			</Stack>
 
 			<Card sx={{ maxWidth: 650, mt: 2 }} variant="outlined">
 				<CardContent>
-					<Stack direction="row">
-						<Typography>Hi.. I'm Raphael a </Typography>&nbsp;
-						<Typography color={colorBlue}> {"<Developer /> "}</Typography>
-						&nbsp;
-					</Stack>
-					<Stack
-						direction="row"
-						alignItems="center"
-						sx={{ marginBottom: -1, marginTop: -1 }}
-					>
-						<Typography>with experience in </Typography> &nbsp;
-						<Typical
-							steps={[
-								"designing",
-								1000,
-								"developing",
-								1000,
-								"implementing",
-								1000,
-							]}
-							loop={2}
-						/>
-						&nbsp;
-						<Typography>innovative software solutions.</Typography>
-					</Stack>
-					<Stack direction="row">
-						<Typography>currently with</Typography>&nbsp;
-						<Avatar
-							alt="appcitystudios"
-							src="appcity.jpg"
-							sx={{ width: 25, height: 25 }}
-						/>
-						<Typography>AppCityStudios. </Typography>
-					</Stack>
-					<Button
-						variant="contained"
-						startIcon={<CloudDownloadIcon />}
-						onClick={handleDownload}
-						size="small"
-						color="primary"
-						sx={{ mt: 1 }}
-					>
-						Get Resume
-					</Button>
+					{loading ? (
+						<Skeleton animation="wave" />
+					) : (
+						<>
+							<Box>
+								<Grid container justifyContent="left">
+									<Grid item xs={12} sm={8} md={6}>
+										<Box
+											bgcolor={colorGrey}
+											p={2}
+											borderRadius={2}
+											sx={{ minWidth: 600 }}
+										>
+											<Box display="flex" flexDirection="column">
+												<Typography>"{quote?.sentence}"</Typography>
+												<Typography
+													color={colorBlue}
+													sx={{ alignSelf: "flex-end", mt: 2 }}
+													variant="body2"
+												>
+													{quote?.character.name}
+												</Typography>
+												<Typography
+													color={colorRed}
+													sx={{ alignSelf: "flex-end" }}
+													variant="body2"
+												>
+													{quote?.character.house.name}
+												</Typography>
+											</Box>
+										</Box>
+									</Grid>
+								</Grid>
+							</Box>
+						</>
+					)}
 				</CardContent>
 			</Card>
 		</>

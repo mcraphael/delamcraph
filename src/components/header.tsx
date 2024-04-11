@@ -6,7 +6,9 @@ function Header() {
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar position="static">
 				<Toolbar>
-					<Typography sx={{ flexGrow: 1 }}>Dela Raphael</Typography>
+					<Typography sx={{ flexGrow: 1 }} fontWeight="bold">
+						Dela Raphael
+					</Typography>
 					<BadgeAvatars />
 				</Toolbar>
 			</AppBar>

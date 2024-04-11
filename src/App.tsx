@@ -6,6 +6,8 @@ import Bio from "./components/bio";
 import Projects from "./components/projects";
 import Connect from "./components/connect";
 import Skills from "./components/skills";
+import Got from "./components/got";
+import Footer from "./components/footer";
 
 const darkTheme = createTheme({
 	palette: {
@@ -23,6 +25,8 @@ function App() {
 			<Connect />
 			<Projects />
 			<Skills />
+			<Got />
+			<Footer />
 		</ThemeProvider>
 	);
 }
