@@ -7,7 +7,6 @@ const colorGreen = green[400];
 const colorRed = red[300];
 const colorBlue = blue[300];
 
-import { Icon } from "@mui/material";
 import TypeScriptIcon from "./icons/typescript.svg"; // Import your SVG files for each language
 import JavaScriptIcon from "./icons/javascript.svg";
 // Import icons for other languages as needed
