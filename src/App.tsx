@@ -1,10 +1,11 @@
-import React from "react";
-
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Header from "./components/header";
 import StartTerminal from "./components/startTerminal";
-import Boi from "./components/boi";
+import Bio from "./components/bio";
+import Projects from "./components/projects";
+import Connect from "./components/connect";
+import Skills from "./components/skills";
 
 const darkTheme = createTheme({
 	palette: {
@@ -18,7 +19,10 @@ function App() {
 			<CssBaseline />
 			<Header />
 			<StartTerminal />
-			<Boi />
+			<Bio />
+			<Connect />
+			<Projects />
+			<Skills />
 		</ThemeProvider>
 	);
 }

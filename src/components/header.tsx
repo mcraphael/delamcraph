@@ -6,9 +6,7 @@ function Header() {
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar position="static">
 				<Toolbar>
-					<Typography sx={{ flexGrow: 1 }}>
-						Dela McRaph Os [Version 1.10.145.0.0] All Right Reserved.
-					</Typography>
+					<Typography sx={{ flexGrow: 1 }}>Dela McRaph</Typography>
 					<BadgeAvatars />
 				</Toolbar>
 			</AppBar>

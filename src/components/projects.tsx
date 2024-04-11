@@ -1,11 +1,15 @@
-import { Card, CardContent, Stack, Typography } from "@mui/material";
+import { Button, Card, CardContent, Stack, Typography } from "@mui/material";
 import { blue, green, red } from "@mui/material/colors";
+import Avatar from "@mui/material/Avatar";
+import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
+import React from "react";
+import Typical from "react-typical";
 
 const colorGreen = green[400];
 const colorRed = red[300];
 const colorBlue = blue[300];
 
-function Boi() {
+const Projects: React.FC = () => {
 	return (
 		<>
 			<Stack direction="row" spacing={0.2} mt={2}>
@@ -29,25 +33,19 @@ function Boi() {
 				</Typography>
 				<Typography variant="h6"> &gt; </Typography>&nbsp;
 				<Typography color={colorGreen} variant="h6">
-					BOI
+					Projects
 				</Typography>
 			</Stack>
 
-			<Card sx={{ maxWidth: 500, mt: 2 }}>
+			<Card sx={{ maxWidth: 650, mt: 2 }} variant="outlined">
 				<CardContent>
-					<Stack direction="row">
-						<Typography>HI... I'm Raphael a </Typography>&nbsp;
-						<Typography color={colorBlue}> &lt;Developer /&gt; </Typography>
-						&nbsp;
-						<Typography>from Ghana.</Typography>
-					</Stack>
-					<Stack direction="row">
-						<Typography>With AppCityStudios</Typography>
-					</Stack>
+					<Typography>
+						chill 😊; just wrote my first hello world! 🧑‍💻😂😂{" "}
+					</Typography>
+					&nbsp;
 				</CardContent>
 			</Card>
 		</>
 	);
-}
-
-export default Boi;
+};
+export default Projects;

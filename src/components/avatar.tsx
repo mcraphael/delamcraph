@@ -39,7 +39,7 @@ export default function BadgeAvatars() {
 			anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
 			variant="dot"
 		>
-			<Avatar alt="Raph" src="../public/raph.jpg" />
+			<Avatar alt="Raph" src="raph.jpg" />
 		</StyledBadge>
 	);
 }
