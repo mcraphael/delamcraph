@@ -1,9 +1,7 @@
-import { Button, Card, CardContent, Stack, Typography } from "@mui/material";
+import { Card, CardContent, Stack, Typography } from "@mui/material";
 import { blue, green, red } from "@mui/material/colors";
-import Avatar from "@mui/material/Avatar";
-import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
+
 import React from "react";
-import Typical from "react-typical";
 
 const colorGreen = green[400];
 const colorRed = red[300];
