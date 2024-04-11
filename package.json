@@ -34,5 +34,8 @@
 		"typescript": "^5.2.2",
 		"vite": "^5.1.6",
 		"vite-plugin-svg": "^0.7.0"
+	},
+	"resolutions": {
+		"react": "^16.8.0"
 	}
 }
