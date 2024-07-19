@@ -37,9 +37,7 @@ const Projects: React.FC = () => {
 
 			<Card sx={{ maxWidth: 650, mt: 2 }} variant="outlined">
 				<CardContent>
-					<Typography>
-						chill 😊; just wrote my first hello world! 🧑‍💻😂😂{" "}
-					</Typography>
+					<Typography>Building Somewhere! 🧑‍💻 </Typography>
 					&nbsp;
 				</CardContent>
 			</Card>
